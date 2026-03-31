@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="송하전장 - 자동차 와이어링 하네스 전문 제조기업. 고품질 와이어링 하네스 설계 및 생산.">
+  <meta name="keywords" content="송하전장, 와이어링 하네스, 자동차 부품, wiring harness, 자동차 전장부품, 경주">
+  <title>송하전장 | 자동차 와이어링 하네스 전문기업</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f6f8;
+      --bg2: #ffffff;
+      --bg3: #eef0f4;
+      --panel: #ffffff;
+      --dark: #1a1e2e;
+      --text: #1a1e2e;
+      --muted: #6b7280;
+      --accent: #1a4fa0;
+      --accent2: #2563c4;
+      --accent-light: #e8eef8;
+      --gold: #c8910a;
+      --gold-light: #fdf3dc;
+      --border: rgba(0,0,0,0.09);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Noto Sans KR', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 3px; color: var(--accent); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 5% 80px; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #1a2f6e 0%, #1a4fa0 50%, #2c6fbd 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.03) 80px, rgba(255,255,255,0.03) 81px),
+        repeating-linear-gradient(0deg,  transparent, transparent 80px, rgba(255,255,255,0.03) 80px, rgba(255,255,255,0.03) 81px);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 30%, rgba(200,145,10,0.18) 0%, transparent 55%);
+    }
+    .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,40,100,0.45) 0%, rgba(20,40,100,0.7) 60%, rgba(20,40,100,0.88) 100%); display: none; }
+
+    .hero-content { position: relative; z-index: 1; }
+    .hero-tag { font-size: 11px; letter-spacing: 4px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 18px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(52px, 9vw, 108px); line-height: 1; letter-spacing: 2px; color: #ffffff; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+    .hero-title span { color: #f0c040; }
+    .hero-sub { margin-top: 22px; max-width: 520px; font-size: 15px; color: rgba(255,255,255,0.75); font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+    .hero-cta { margin-top: 38px; display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+    .btn-primary { display: inline-block; padding: 13px 32px; background: #f0c040; color: #1a2f6e; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: #ffd760; transform: translateY(-2px); }
+    .btn-outline { display: inline-block; padding: 13px 32px; border: 1px solid rgba(255,255,255,0.5); color: #fff; font-size: 13px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; transition: border-color 0.2s, transform 0.15s; }
+    .btn-outline:hover { border-color: #f0c040; color: #f0c040; transform: translateY(-2px); }
+    .hero-stats { position: absolute; right: 5%; bottom: 80px; z-index: 1; display: flex; flex-direction: column; gap: 24px; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
+    .stat-item { text-align: right; }
+    .stat-num { font-family: var(--font-display); font-size: 36px; color: #f0c040; line-height: 1; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* SECTIONS */
+    section { padding: 100px 5%; }
+    .section-tag { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 52px); letter-spacing: 1px; line-height: 1.1; color: var(--dark); }
+    .section-divider { width: 48px; height: 3px; background: var(--accent); margin: 18px 0 40px; }
+
+    /* ABOUT */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .about-text p { font-size: 15px; color: var(--muted); margin-bottom: 14px; font-weight: 300; }
+
+    /* 설립 이념 카드 */
+    .philosophy-box {
+      background: linear-gradient(135deg, #1a2f6e, #1a4fa0);
+      border-radius: 12px; padding: 32px 28px; margin-top: 28px; color: #fff;
+    }
+    .philosophy-box h4 { font-size: 12px; letter-spacing: 3px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 20px; }
+    .philosophy-items { display: flex; flex-direction: column; gap: 12px; }
+    .philosophy-item { display: flex; align-items: center; gap: 14px; }
+    .philosophy-dot { width: 8px; height: 8px; border-radius: 50%; background: #f0c040; flex-shrink: 0; }
+    .philosophy-text { font-size: 17px; font-weight: 500; letter-spacing: 2px; color: #fff; }
+
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+    .feature-card { background: var(--bg3); border: 1px solid var(--border); padding: 22px; border-radius: 8px; transition: border-color 0.2s, box-shadow 0.2s; }
+    .feature-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(26,79,160,0.08); }
+    .feature-icon { font-size: 22px; margin-bottom: 8px; }
+    .feature-card h4 { font-size: 13px; font-weight: 500; margin-bottom: 5px; color: var(--dark); }
+    .feature-card p { font-size: 12px; color: var(--muted); font-weight: 300; }
+
+    .history { margin-top: 40px; }
+    .history h3 { font-size: 15px; font-weight: 500; margin-bottom: 20px; color: var(--dark); }
+    .history-item { display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .history-year { font-family: var(--font-display); font-size: 18px; color: var(--accent); min-width: 52px; }
+    .history-desc { font-size: 13px; color: var(--muted); font-weight: 300; padding-top: 2px; }
+
+    .about-imgs { display: flex; flex-direction: column; gap: 12px; }
+    .img-placeholder { background: var(--bg3); border: 2px dashed rgba(26,79,160,0.25); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); text-align: center; gap: 8px; padding: 24px; }
+    .ph-icon { font-size: 26px; opacity: 0.4; }
+    .ph-text { font-size: 12px; line-height: 1.7; }
+
+    /* PRODUCTS */
+    #products { background: var(--bg); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .product-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; border-top: 3px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; }
+    .product-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(26,79,160,0.1); }
+    .product-img-ph { width: 100%; aspect-ratio: 16/9; }
+    .product-body { padding: 24px; }
+    .product-no { font-family: var(--font-display); font-size: 38px; color: rgba(26,79,160,0.12); line-height: 1; margin-bottom: 10px; }
+    .product-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; color: var(--dark); }
+    .product-card p { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.8; }
+    .product-tags { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; background: var(--accent-light); color: var(--accent); border-radius: 4px; }
+
+    /* CLIENTS */
+    #clients { background: var(--bg2); }
+    .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .client-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 28px 20px; text-align: center; transition: border-color 0.2s, box-shadow 0.2s; }
+    .client-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(26,79,160,0.08); }
+    .client-logo-ph { width: 80px; height: 32px; margin: 0 auto 12px; background: #fff; border: 1px dashed rgba(26,79,160,0.25); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+    .client-name { font-size: 14px; font-weight: 500; color: var(--dark); }
+    .client-type { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .contact-info h3 { font-size: 17px; margin-bottom: 24px; color: var(--dark); }
+    .info-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    .info-icon { width: 36px; height: 36px; background: var(--accent-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .info-label { font-size: 11px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+    .info-value { font-size: 14px; color: var(--text); margin-top: 2px; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+    .form-group input, .form-group textarea, .form-group select {
+      background: var(--bg2); border: 1px solid var(--border); color: var(--text);
+      padding: 12px 16px; font-family: var(--font-body); font-size: 13px;
+      outline: none; transition: border-color 0.2s; resize: none; appearance: none;
+      border-radius: 6px;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,79,160,0.08); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .submit-btn { background: var(--accent); color: #fff; border: none; padding: 14px 32px; font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; border-radius: 6px; }
+    .submit-btn:hover { background: var(--accent2); }
+
+    /* DIRECTIONS */
+    #directions { background: var(--bg2); }
+    .directions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .map-wrap { width: 100%; aspect-ratio: 4/3; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; }
+    .directions-info h3 { font-size: 17px; margin-bottom: 24px; color: var(--dark); }
+    .address-box { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; margin-bottom: 28px; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.8; }
+    .address-box strong { color: var(--accent); display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+    .direction-section { margin-bottom: 24px; }
+    .direction-section h4 { font-size: 12px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+    .direction-item { display: flex; gap: 10px; margin-bottom: 8px; }
+    .dir-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0; }
+    .dir-text { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: var(--font-display); font-size: 18px; color: #f0c040; letter-spacing: 3px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer-info { font-size: 11px; color: rgba(255,255,255,0.4); text-align: right; line-height: 1.8; }
+
+    @media (max-width: 768px) {
+      .hero-stats { display: none; }
+      .about-grid, .contact-grid, .directions-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-features { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-info { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="Songha_logo.jpg" alt="송하전장 로고" style="width:36px;height:36px;object-fit:contain;border-radius:50%;">
+    <span style="font-family:var(--font-display);font-size:22px;letter-spacing:3px;color:var(--accent);">송하전장</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">회사소개</a></li>
+    <li><a href="#policy">경영방침</a></li>
+    <li><a href="#items">생산품목</a></li>
+    <li><a href="#process">공정개요</a></li>
+    <li><a href="#clients">매출/거래처</a></li>
+    <li><a href="#certs">인증</a></li>
+    <li><a href="#org">조직도</a></li>
+    <li><a href="#mes">MES</a></li>
+    <li><a href="#contact">문의</a></li>
+    <li><a href="#directions">오시는 길</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <img class="hero-bg-img" src="company.jpg" alt="송하전장 공장 전경" style="display:block;">
+  <div class="hero-overlay" style="display:block;"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Automotive Wiring Harness Manufacturer</p>
+    <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+      <h1 class="hero-title" style="margin:0;">자동차를<br>연결하는<br><span>기술</span></h1>
+      <img src="Songha_logo.jpg" alt="송하전장 로고" style="width:160px;height:160px;object-fit:contain;flex-shrink:0;opacity:0;animation:fadeUp 0.8s 0.5s forwards;border-radius:50%;">
+    </div>
+    <p class="hero-sub">
+      송하전장은 Q·C·D에 입각한 고품질 와이어링 하네스를<br>
+      설계·생산하며 전문성을 갖춘 기업으로 성장하고 있습니다.
+    </p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">제품 보기</a>
+      <a href="#contact" class="btn-outline">문의하기</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">24+</div><div class="stat-label">Years of experience</div></div>
+    <div class="stat-item"><div class="stat-num">ISO</div><div class="stat-label">9001 Certified</div></div>
+    <div class="stat-item"><div class="stat-num">SQ</div><div class="stat-label">HKMC A등급 인증</div></div>
+  </div>
+</section>
+
+<section id="about">
+  <p class="section-tag">About Us</p>
+  <h2 class="section-title">송하전장 소개</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div>
+      <div class="about-text">
+        <p>송하전장은 자동차 부품 생산업체로서 고부가가치를 창출하고 고품질 생산성을 바탕으로 기술의 축적과 다원화되어가는 부품을 다품종 소량생산 시스템으로 공급합니다.</p>
+        <p>Q(품질) · C(비용) · D(납기)에 입각한 제품을 납품하여 전문성을 가진 기업으로 성장하고자 합니다.</p>
+        <p>경주시 안강읍에 위치한 자체 생산시설을 기반으로 국내 완성차 OEM 및 1차 협력사와 오랜 파트너십을 이어오고 있습니다.</p>
+      </div>
+
+      <!-- 설립 이념 -->
+      <div class="philosophy-box">
+        <h4>설립 이념</h4>
+        <div class="philosophy-items">
+          <div class="philosophy-item">
+            <div class="philosophy-dot"></div>
+            <div class="philosophy-text">회사 사랑</div>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-dot"></div>
+            <div class="philosophy-text">나라 사랑</div>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-dot"></div>
+            <div class="philosophy-text">인류 사랑</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-features">
+        <div class="feature-card"><div class="feature-icon">🏭</div><h4>자체 생산시설</h4><p>최신 설비를 갖춘 자체 공장에서 전 공정 생산</p></div>
+        <div class="feature-card"><div class="feature-icon">✅</div><h4>ISO 9001 인증</h4><p>국제 품질경영 시스템 인증 취득·유지</p></div>
+        <div class="feature-card"><div class="feature-icon">⚙️</div><h4>다품종 소량생산</h4><p>고객 사양에 맞는 유연한 생산 시스템 운영</p></div>
+        <div class="feature-card"><div class="feature-icon">🚗</div><h4>Q·C·D 경영</h4><p>품질·비용·납기 3원칙을 최우선으로 실천</p></div>
+      </div>
+
+      <div class="history">
+        <h3>회사 연혁</h3>
+        <div class="history-item"><div class="history-year">2001</div><div class="history-desc">㈜세원ECS에 와이어링 하네스 납품 개시 (02월)<br>자가 공장 구입 (08월)</div></div>
+        <div class="history-item"><div class="history-year">2003</div><div class="history-desc">SQ인증서 획득 — WH114 (11월)</div></div>
+        <div class="history-item"><div class="history-year">2004</div><div class="history-desc">ISO 9001 인증 획득 — EQAICC-Q-R4746 (10월)</div></div>
+        <div class="history-item"><div class="history-year">2005</div><div class="history-desc">㈜세원ECS 우수협력업체 선정 (12월)</div></div>
+        <div class="history-item"><div class="history-year">2013</div><div class="history-desc">HKMC SQ A 등급 인증 (03월)</div></div>
+        <div class="history-item"><div class="history-year">2017</div><div class="history-desc">OS-CAR EV 전기차 전용 고전압 WIR'G 양산 (09월)</div></div>
+        <div class="history-item"><div class="history-year">2018</div><div class="history-desc">㈜유라코퍼레이션 우수 조립협력사 표창 (12월)</div></div>
+        <div class="history-item"><div class="history-year">2019</div><div class="history-desc">QX-CAR RR DR 외 2종 WIR'G 양산 (06월)</div></div>
+        <div class="history-item"><div class="history-year">2020</div><div class="history-desc">송하전장 2공장 유라코퍼레이션 고전압 WIR'G 이관 확정 (01월)<br>2공장 생산설비 이동 (03월)<br>2공장 신규 SQ 취득 완료 — HKMC 거래 조건 (06월)<br>2공장 유라코퍼레이션 고전압 WIR'G 납품 실시 (07월)</div></div>
+        <div class="history-item"><div class="history-year">2021</div><div class="history-desc">2공장 JK1 FRT SUB / BATT J/B ITEM 개발완료, 양산 중 (01월)<br>1공장 JW1 EV WCCU 개발 — P1 진행 중 (02월)<br>2공장 RS4 BATT J/B 개발 — P1 진행 중 (03월)</div></div>
+      </div>
+    </div>
+
+    <div class="about-imgs">
+      <!--
+      ★ 생산라인 사진: factory.jpg를 같은 폴더에 저장 후 주석 해제
+      <img src="factory.jpg" alt="송하전장 생산라인" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;">
+      -->
+      <img src="company.jpg" alt="송하전장 공장 전경" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;">
+      <div class="img-placeholder" style="aspect-ratio:4/3;">
+        <div class="ph-icon">⚙️</div>
+        <div class="ph-text"><strong style="color:var(--accent);">생산라인 사진</strong><br>factory.jpg 파일을 같은 폴더에 넣고<br>위 주석을 해제하세요</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="policy" style="background:var(--bg3);">
+  <p class="section-tag">Management &amp; Quality</p>
+  <h2 class="section-title">경영 및 품질 방침</h2>
+  <div class="section-divider"></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+    <!-- 경영 방침 -->
+    <div style="background:var(--bg2); border-radius:12px; border:1px solid var(--border); overflow:hidden;">
+      <div style="background:linear-gradient(90deg,#1a4fa0,#2563c4); padding:16px 24px; text-align:center;">
+        <div style="font-size:11px; letter-spacing:3px; color:rgba(255,255,255,0.7); text-transform:uppercase; margin-bottom:4px;">Management Policy</div>
+        <div style="font-size:18px; font-weight:500; color:#fff;">경영 방침</div>
+      </div>
+      <div style="padding:28px 28px 32px;">
+        <div style="font-size:16px; font-weight:500; color:var(--accent); text-align:center; margin-bottom:28px; letter-spacing:1px;">"성장과 도약의 해"</div>
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--accent-light); color:var(--accent); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">1</div>
+            <div>
+              <div style="font-size:14px; font-weight:500; color:var(--dark);">생산 영역 구축</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:3px;">친환경 미래 자동차</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--accent-light); color:var(--accent); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">2</div>
+            <div>
+              <div style="font-size:14px; font-weight:500; color:var(--dark);">신뢰성 확보</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:3px;">실험실 구축 및 기술력 향상</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--accent-light); color:var(--accent); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">3</div>
+            <div>
+              <div style="font-size:14px; font-weight:500; color:var(--dark);">변화된 SYSTEM 활용</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:3px;">MES 활용 100%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 품질 방침 -->
+    <div style="background:var(--bg2); border-radius:12px; border:1px solid var(--border); overflow:hidden;">
+      <div style="background:linear-gradient(90deg,#1a4fa0,#2563c4); padding:16px 24px; text-align:center;">
+        <div style="font-size:11px; letter-spacing:3px; color:rgba(255,255,255,0.7); text-transform:uppercase; margin-bottom:4px;">Quality Policy</div>
+        <div style="font-size:18px; font-weight:500; color:#fff;">품질 방침</div>
+      </div>
+      <div style="padding:28px 28px 32px;">
+        <div style="font-size:16px; font-weight:500; color:var(--accent); text-align:center; margin-bottom:28px; letter-spacing:1px;">"고객 불량 ZERO"</div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px;"></div>
+            <div>
+              <div style="font-size:14px; font-weight:500; color:var(--dark);">작업자 개인기술력 확대</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:2px;">장비 자주 보전 체제 구축</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px;"></div>
+            <div>
+              <div style="font-size:14px; font-weight:500; color:var(--dark);">업체별 평가강화</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:2px;">사내 SQ 공정감사 정례화 (1회/분기)<br>외주품질회의 강화 (1회/주)</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px;"></div>
+            <div style="font-size:14px; font-weight:500; color:var(--dark);">공정별 품질목표 설정/관리</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px;"></div>
+            <div style="font-size:14px; font-weight:500; color:var(--dark);">MES 완벽 LOT 추적화 (전산)</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px;"></div>
+            <div style="font-size:14px; font-weight:500; color:var(--dark);">신차개발 대응력 확보</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="products">
+  <p class="section-tag">Products</p>
+  <h2 class="section-title">제품 소개</h2>
+  <div class="section-divider"></div>
+  <div class="products-grid">
+    <div class="product-card">
+      <!--
+      ★ 제품 사진: product1.jpg를 같은 폴더에 저장 후 주석 해제
+      <img src="product1.jpg" alt="엔진룸 와이어링 하네스" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
+      -->
+      <div class="img-placeholder product-img-ph" style="aspect-ratio:16/9;border-radius:0;border:none;border-bottom:1px dashed rgba(26,79,160,0.2);">
+        <div class="ph-icon">📷</div><div class="ph-text"><strong style="color:var(--accent);">제품 사진</strong><br>product1.jpg</div>
+      </div>
+      <div class="product-body">
+        <div class="product-no">01</div>
+        <h3>엔진룸 와이어링 하네스</h3>
+        <p>엔진, 냉각계통, 센서류를 연결하는 고온·고진동 환경에 최적화된 하네스입니다. 내열 소재와 방수 커넥터를 적용합니다.</p>
+        <div class="product-tags"><span class="tag">High Temp</span><span class="tag">방수</span><span class="tag">OEM</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <!--<img src="product2.jpg" alt="실내 와이어링 하네스" style="width:100%;aspect-ratio:16/9;object-fit:cover;">-->
+      <div class="img-placeholder product-img-ph" style="aspect-ratio:16/9;border-radius:0;border:none;border-bottom:1px dashed rgba(26,79,160,0.2);">
+        <div class="ph-icon">📷</div><div class="ph-text"><strong style="color:var(--accent);">제품 사진</strong><br>product2.jpg</div>
+      </div>
+      <div class="product-body">
+        <div class="product-no">02</div>
+        <h3>실내 와이어링 하네스</h3>
+        <p>계기판, 시트, 도어 등 차량 실내 전장품을 연결하는 하네스로 경량화 설계와 정밀 배선이 특징입니다.</p>
+        <div class="product-tags"><span class="tag">경량화</span><span class="tag">Interior</span><span class="tag">맞춤제작</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <!--<img src="product3.jpg" alt="바디 와이어링 하네스" style="width:100%;aspect-ratio:16/9;object-fit:cover;">-->
+      <div class="img-placeholder product-img-ph" style="aspect-ratio:16/9;border-radius:0;border:none;border-bottom:1px dashed rgba(26,79,160,0.2);">
+        <div class="ph-icon">📷</div><div class="ph-text"><strong style="color:var(--accent);">제품 사진</strong><br>product3.jpg</div>
+      </div>
+      <div class="product-body">
+        <div class="product-no">03</div>
+        <h3>바디 와이어링 하네스</h3>
+        <p>램프, 도어록, 와이퍼 등 차체 외부 전장 시스템을 연결합니다. 자외선·수분 저항성이 뛰어난 소재를 사용합니다.</p>
+        <div class="product-tags"><span class="tag">내UV</span><span class="tag">방수</span><span class="tag">Body</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <!--<img src="product4.jpg" alt="EV 하이브리드용 하네스" style="width:100%;aspect-ratio:16/9;object-fit:cover;">-->
+      <div class="img-placeholder product-img-ph" style="aspect-ratio:16/9;border-radius:0;border:none;border-bottom:1px dashed rgba(26,79,160,0.2);">
+        <div class="ph-icon">📷</div><div class="ph-text"><strong style="color:var(--accent);">제품 사진</strong><br>product4.jpg</div>
+      </div>
+      <div class="product-body">
+        <div class="product-no">04</div>
+        <h3>EV / 하이브리드용 하네스</h3>
+        <p>고전압 배터리 및 모터 제어 시스템 연결에 특화된 하네스입니다. 고전압 안전 기준 및 EMC 기준을 충족합니다.</p>
+        <div class="product-tags"><span class="tag">고전압</span><span class="tag">EV</span><span class="tag">HV Safety</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     생산 품목 내역
+═══════════════════════════════════════════ -->
+<section id="items" style="background:var(--dark);padding:100px 5%;">
+  <p class="section-tag" style="color:rgba(255,255,255,0.5);">Production Items</p>
+  <h2 class="section-title" style="color:#fff;">생산 품목 내역</h2>
+  <div style="width:48px;height:3px;background:#f0c040;margin:18px 0 40px;"></div>
+
+  <!-- 탭 -->
+  <div style="display:flex;gap:12px;margin-bottom:32px;">
+    <button onclick="showTab('tab1','tab2',this,document.getElementById('btn2'))" id="btn1"
+      style="padding:10px 28px;border-radius:6px;border:none;background:#f0c040;color:#1a2f6e;font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font-body);">
+      1공장 저전압
+    </button>
+    <button onclick="showTab('tab2','tab1',this,document.getElementById('btn1'))" id="btn2"
+      style="padding:10px 28px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);background:transparent;color:rgba(255,255,255,0.7);font-size:13px;cursor:pointer;font-family:var(--font-body);">
+      2공장 고전압
+    </button>
+  </div>
+
+  <!-- 1공장 저전압 -->
+  <div id="tab1">
+    <div style="text-align:center;font-size:15px;font-weight:500;color:#f0c040;letter-spacing:2px;margin-bottom:24px;">저전압 와이어링 하네스</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:40px;">
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🔌</div><div style="font-size:12px;color:#fff;font-weight:500;">IP 정션블록</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🔗</div><div style="font-size:12px;color:#fff;font-weight:500;">메인 와이어 하네스</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🚗</div><div style="font-size:12px;color:#fff;font-weight:500;">프론트 와이어 하네스</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🔧</div><div style="font-size:12px;color:#fff;font-weight:500;">엔진룸 정션블록</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">⚡</div><div style="font-size:12px;color:#fff;font-weight:500;">컨트롤 와이어 하네스</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">📟</div><div style="font-size:12px;color:#fff;font-weight:500;">FPCB 하네스</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🏠</div><div style="font-size:12px;color:#fff;font-weight:500;">루프 와이어 하네스</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🚪</div><div style="font-size:12px;color:#fff;font-weight:500;">도어 와이어 하네스</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:18px;margin-bottom:8px;">🛋️</div><div style="font-size:12px;color:#fff;font-weight:500;">플로어 와이어 하네스</div>
+      </div>
+    </div>
+    <!-- 1공장 ITEM LIST -->
+    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;letter-spacing:2px;text-transform:uppercase;">Item List — 1공장 (저전압)</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="background:rgba(240,192,64,0.15);">
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">No</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">차종</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">품명</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">품번</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">생산비율</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">구분</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">1</td><td style="padding:8px;text-align:center;color:#fff;">HI</td><td style="padding:8px;text-align:center;color:#fff;">FEM</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91810-D2000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">2</td><td style="padding:8px;text-align:center;color:#fff;">HR</td><td style="padding:8px;text-align:center;color:#fff;">RPAS</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91890-4F010</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">3</td><td style="padding:8px;text-align:center;color:#fff;">HR</td><td style="padding:8px;text-align:center;color:#fff;">EEGR</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">28430-4A900</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">4</td><td style="padding:8px;text-align:center;color:#fff;">HR</td><td style="padding:8px;text-align:center;color:#fff;">RR HTD</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91755-4F000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">5</td><td style="padding:8px;text-align:center;color:#fff;">AE (P)HEV</td><td style="padding:8px;text-align:center;color:#fff;">ROOF</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91800-G2000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">6</td><td style="padding:8px;text-align:center;color:#fff;">AE (P)HEV</td><td style="padding:8px;text-align:center;color:#fff;">T/GATE EXT'N</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91690-G2000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">7</td><td style="padding:8px;text-align:center;color:#fff;">AE (P)HEV</td><td style="padding:8px;text-align:center;color:#fff;">RR HTD</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91830-G2000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">8</td><td style="padding:8px;text-align:center;color:#fff;">AE EV</td><td style="padding:8px;text-align:center;color:#fff;">ROOF</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91800-G7000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">9</td><td style="padding:8px;text-align:center;color:#fff;">AE EV</td><td style="padding:8px;text-align:center;color:#fff;">T/GATE EXT'N</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91690-G7000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">10</td><td style="padding:8px;text-align:center;color:#fff;">AE EV</td><td style="padding:8px;text-align:center;color:#fff;">RR HTD</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91830-G7000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">11</td><td style="padding:8px;text-align:center;color:#fff;">OS</td><td style="padding:8px;text-align:center;color:#fff;">RR DR LH</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91620-J9000</td><td style="padding:8px;text-align:center;color:#f0c040;">50%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">12</td><td style="padding:8px;text-align:center;color:#fff;">OS</td><td style="padding:8px;text-align:center;color:#fff;">RR DR RH</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91630-J9000</td><td style="padding:8px;text-align:center;color:#f0c040;">30%</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">저전압</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">15–22</td><td style="padding:8px;text-align:center;color:#fff;">OS EV</td><td style="padding:8px;text-align:center;color:#fff;">PTC HTR 외 7종</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91958-J211A 외</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">고전압</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2공장 고전압 -->
+  <div id="tab2" style="display:none;">
+    <div style="text-align:center;font-size:15px;font-weight:500;color:#f0c040;letter-spacing:2px;margin-bottom:24px;">고전압 와이어링 하네스</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:40px;">
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🔋</div><div style="font-size:12px;color:#fff;font-weight:500;">연료전지차 고전압<br>정션 블록</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">⚡</div><div style="font-size:12px;color:#fff;font-weight:500;">전기차 고전압<br>정션 블록</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🔌</div><div style="font-size:12px;color:#fff;font-weight:500;">모터 3상 케이블</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🔶</div><div style="font-size:12px;color:#fff;font-weight:500;">HV 케이블</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">📡</div><div style="font-size:12px;color:#fff;font-weight:500;">CMC</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🔌</div><div style="font-size:12px;color:#fff;font-weight:500;">In-Cable Control Box</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🔧</div><div style="font-size:12px;color:#fff;font-weight:500;">PRA</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🔩</div><div style="font-size:12px;color:#fff;font-weight:500;">충전 인렛</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">📦</div><div style="font-size:12px;color:#fff;font-weight:500;">BFA</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:16px;text-align:center;border:1px solid rgba(255,210,64,0.2);">
+        <div style="font-size:18px;margin-bottom:8px;">🖥️</div><div style="font-size:12px;color:#fff;font-weight:500;">PLC Controller</div>
+      </div>
+    </div>
+    <!-- 2공장 ITEM LIST -->
+    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;letter-spacing:2px;text-transform:uppercase;">Item List — 2공장 (고전압)</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="background:rgba(240,192,64,0.15);">
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">No</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">차종</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">품명</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">품번</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">생산비율</th>
+            <th style="padding:10px 8px;color:#f0c040;font-weight:500;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">유라경주</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">1</td><td style="padding:8px;text-align:center;color:#fff;">AE EV</td><td style="padding:8px;text-align:center;color:#fff;">FRONT SUB</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">9120L-G7010</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">2</td><td style="padding:8px;text-align:center;color:#fff;">JK1</td><td style="padding:8px;text-align:center;color:#fff;">FRONT_SUB</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91200-ARSUB</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">3</td><td style="padding:8px;text-align:center;color:#fff;">JK1</td><td style="padding:8px;text-align:center;color:#fff;">BATT J/BLOCK</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">9120L-ARSUB</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">4</td><td style="padding:8px;text-align:center;color:#fff;">OS EV외 9차종</td><td style="padding:8px;text-align:center;color:#fff;">W/O ICCB</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91669-K4000</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">5</td><td style="padding:8px;text-align:center;color:#fff;">OS EV외 9차종</td><td style="padding:8px;text-align:center;color:#fff;">WITH ICCB</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91675-K4011</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">6</td><td style="padding:8px;text-align:center;color:#fff;">HI</td><td style="padding:8px;text-align:center;color:#fff;">FRONT SUB</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91200-D2S13</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">7</td><td style="padding:8px;text-align:center;color:#fff;">HI</td><td style="padding:8px;text-align:center;color:#fff;">CONT SUB</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91445-D2S10</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">8</td><td style="padding:8px;text-align:center;color:#fff;">HI</td><td style="padding:8px;text-align:center;color:#fff;">REAR J/BLOCK</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91950-D2330</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;text-align:center;color:rgba(255,255,255,0.5);">9</td><td style="padding:8px;text-align:center;color:#fff;">HI</td><td style="padding:8px;text-align:center;color:#fff;">BATT J/BLOCK</td><td style="padding:8px;text-align:center;color:rgba(255,255,255,0.6);font-size:11px;">91950-D2450</td><td style="padding:8px;text-align:center;color:#f0c040;">100%</td><td style="padding:8px;text-align:center;color:#7dd3b0;">O</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     공정 개요
+═══════════════════════════════════════════ -->
+<section id="process" style="background:var(--bg2);padding:100px 5%;">
+  <p class="section-tag">Process</p>
+  <h2 class="section-title">공정 개요</h2>
+  <div class="section-divider"></div>
+
+  <!-- 1공장 공정 -->
+  <h3 style="font-size:16px;font-weight:500;color:var(--accent);margin-bottom:24px;letter-spacing:1px;">1공장 (저전압) 공정 흐름</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:48px;">
+    <div style="background:var(--accent-light);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid var(--accent);position:relative;">
+      <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:6px;">① 수입 검사</div>
+      <div style="font-size:11px;color:var(--muted);">유라코퍼레이션 유상 공급 자재를 수입 검사하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">② 가공 공정</div>
+      <div style="font-size:11px;color:var(--muted);">WIRE와 TM'L을 연결시키는 절단·압착 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">③ 게이트 검사</div>
+      <div style="font-size:11px;color:var(--muted);">1차 가공 완료 제품의 GATE 검사 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">④ 서브 공정</div>
+      <div style="font-size:11px;color:var(--muted);">가공 완료된 반제품을 커넥터에 삽입하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑤ 조립 공정</div>
+      <div style="font-size:11px;color:var(--muted);">서브완료품에 테이핑과 기타 부자재 부착 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑥ 회로 검사</div>
+      <div style="font-size:11px;color:var(--muted);">조립완성품의 회로배열 상태를 검증하는 공정 (F/PROOF)</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑦ 최종 검사</div>
+      <div style="font-size:11px;color:var(--muted);">회로검사 완료품의 외관을 검사하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #93c5fd;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑧ 출고</div>
+      <div style="font-size:11px;color:var(--muted);">최종 완제품을 출하시키는 공정</div>
+    </div>
+  </div>
+
+  <!-- 2공장 공정 -->
+  <h3 style="font-size:16px;font-weight:500;color:var(--accent);margin-bottom:24px;letter-spacing:1px;">2공장 (고전압) 공정 흐름</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;">
+    <div style="background:var(--gold-light);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid var(--gold);">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:6px;">① 자재입고·수입검사</div>
+      <div style="font-size:11px;color:var(--muted);">유라코퍼레이션 유상 공급 자재를 수입 검사하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">② 자동절단</div>
+      <div style="font-size:11px;color:var(--muted);">와이어를 자동으로 절단하는 공정 (PS 9550)</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">③ 차폐선 절단·탈피</div>
+      <div style="font-size:11px;color:var(--muted);">차폐선을 절단·탈피하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">④ 선부품 작업</div>
+      <div style="font-size:11px;color:var(--muted);">외장부품을 와이어에 삽입하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑤ 반자동압착</div>
+      <div style="font-size:11px;color:var(--muted);">와이어에 단자를 결속시키는 공정 (특별 특성 공정)</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑥ 게이트 검사</div>
+      <div style="font-size:11px;color:var(--muted);">절단 압착된 반제품을 검사하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑦ 조립</div>
+      <div style="font-size:11px;color:var(--muted);">반제품에 커넥터를 결속시키는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑧ 회로·내전압·기밀 검사</div>
+      <div style="font-size:11px;color:var(--muted);">회로/내전압/기밀 검사를 실시하는 공정 (F/PROOF)</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑨ 포장</div>
+      <div style="font-size:11px;color:var(--muted);">검사 완료된 제품을 포장하는 공정</div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:18px 12px;text-align:center;border-top:3px solid #fbbf24;">
+      <div style="font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;">⑩ 출고</div>
+      <div style="font-size:11px;color:var(--muted);">포장이 완료된 제품을 출고시키는 공정</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     설비 현황
+═══════════════════════════════════════════ -->
+<section id="equipment" style="background:var(--bg);padding:100px 5%;">
+  <p class="section-tag">Equipment</p>
+  <h2 class="section-title">설비 현황</h2>
+  <div class="section-divider"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+
+    <!-- 1공장 설비 -->
+    <div>
+      <h3 style="font-size:15px;font-weight:500;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);">1공장 (저전압) 주요 설비</h3>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:var(--accent-light);">
+              <th style="padding:9px 10px;color:var(--accent);font-weight:500;text-align:left;border-bottom:1px solid var(--border);">품명</th>
+              <th style="padding:9px 10px;color:var(--accent);font-weight:500;text-align:center;border-bottom:1px solid var(--border);">수량</th>
+              <th style="padding:9px 10px;color:var(--accent);font-weight:500;text-align:left;border-bottom:1px solid var(--border);">제조사</th>
+              <th style="padding:9px 10px;color:var(--accent);font-weight:500;text-align:center;border-bottom:1px solid var(--border);">구입년도</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">자동절단 압착기 (KM102)</td><td style="padding:8px;text-align:center;color:var(--muted);">3</td><td style="padding:8px 10px;color:var(--muted);">KM 디지텍</td><td style="padding:8px;text-align:center;color:var(--muted);">2002</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">자동절단 압착기 (KM103)</td><td style="padding:8px;text-align:center;color:var(--muted);">5</td><td style="padding:8px 10px;color:var(--muted);">KM 디지텍</td><td style="padding:8px;text-align:center;color:var(--muted);">2004</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">반 자동 압착기 (2T,4T PRESS)</td><td style="padding:8px;text-align:center;color:var(--muted);">15</td><td style="padding:8px 10px;color:var(--muted);">A&P 기계공업</td><td style="padding:8px;text-align:center;color:var(--muted);">2004</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">자동 절단기 (슈레니거 P/S 5500)</td><td style="padding:8px;text-align:center;color:var(--muted);">1</td><td style="padding:8px 10px;color:var(--muted);">슈레니거</td><td style="padding:8px;text-align:center;color:var(--muted);">2014</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">전선 공급기</td><td style="padding:8px;text-align:center;color:var(--muted);">3</td><td style="padding:8px 10px;color:var(--muted);">KM 디지텍</td><td style="padding:8px;text-align:center;color:var(--muted);">2004</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">APPLICATOR</td><td style="padding:8px;text-align:center;color:var(--muted);">240</td><td style="padding:8px 10px;color:var(--muted);">A&P 기계공업</td><td style="padding:8px;text-align:center;color:var(--muted);">2001~</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">회로검사기</td><td style="padding:8px;text-align:center;color:var(--muted);">10</td><td style="padding:8px 10px;color:var(--muted);">유라코퍼레이션</td><td style="padding:8px;text-align:center;color:var(--muted);">2008~</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">기밀검사기 (다채널)</td><td style="padding:8px;text-align:center;color:var(--muted);">5</td><td style="padding:8px 10px;color:var(--muted);">하닉스</td><td style="padding:8px;text-align:center;color:var(--muted);">2013~</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">회로라벨 프린터</td><td style="padding:8px;text-align:center;color:var(--muted);">6</td><td style="padding:8px 10px;color:var(--muted);">인터멕</td><td style="padding:8px;text-align:center;color:var(--muted);">2006~</td></tr>
+            <tr style="background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">회로검사판</td><td style="padding:8px;text-align:center;color:var(--muted);">20</td><td style="padding:8px 10px;color:var(--muted);">유라코퍼레이션</td><td style="padding:8px;text-align:center;color:var(--muted);">2002~</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2공장 설비 -->
+    <div>
+      <h3 style="font-size:15px;font-weight:500;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--gold);">2공장 (고전압) 주요 설비</h3>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:var(--gold-light);">
+              <th style="padding:9px 10px;color:var(--gold);font-weight:500;text-align:left;border-bottom:1px solid var(--border);">품명</th>
+              <th style="padding:9px 10px;color:var(--gold);font-weight:500;text-align:center;border-bottom:1px solid var(--border);">수량</th>
+              <th style="padding:9px 10px;color:var(--gold);font-weight:500;text-align:left;border-bottom:1px solid var(--border);">제조사</th>
+              <th style="padding:9px 10px;color:var(--gold);font-weight:500;text-align:center;border-bottom:1px solid var(--border);">구입년도</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">자동 절단기 (슈레니거 M/S 5600)</td><td style="padding:8px;text-align:center;color:var(--muted);">2</td><td style="padding:8px 10px;color:var(--muted);">슈레니거</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">전선 공급기 (KPF-3500)</td><td style="padding:8px;text-align:center;color:var(--muted);">3</td><td style="padding:8px 10px;color:var(--muted);">휴민텍</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">컨베이어 (KWS-3100ø3.5M)</td><td style="padding:8px;text-align:center;color:var(--muted);">3</td><td style="padding:8px 10px;color:var(--muted);">휴민텍</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">수통압착기 (2T~20T)</td><td style="padding:8px;text-align:center;color:var(--muted);">14</td><td style="padding:8px 10px;color:var(--muted);">한승디지텍/유니코어텍/유라/MECAL</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">차폐선 탈피기 (3SQ)</td><td style="padding:8px;text-align:center;color:var(--muted);">1</td><td style="padding:8px 10px;color:var(--muted);">거성산업</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">초음파 융착기 (DS-20-GT-MAK12)</td><td style="padding:8px;text-align:center;color:var(--muted);">1</td><td style="padding:8px 10px;color:var(--muted);">SCHUNK</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">인장력검사기 (DTT-500)</td><td style="padding:8px;text-align:center;color:var(--muted);">1</td><td style="padding:8px 10px;color:var(--muted);">대성테크</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">회로검사기</td><td style="padding:8px;text-align:center;color:var(--muted);">1</td><td style="padding:8px 10px;color:var(--muted);">유라</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;color:var(--dark);">내전압검사기</td><td style="padding:8px;text-align:center;color:var(--muted);">1</td><td style="padding:8px 10px;color:var(--muted);">Rael TAK</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+            <tr style="background:var(--bg3);"><td style="padding:8px 10px;color:var(--dark);">비전 검사기</td><td style="padding:8px;text-align:center;color:var(--muted);">2</td><td style="padding:8px 10px;color:var(--muted);">KNC</td><td style="padding:8px;text-align:center;color:var(--muted);">2020.03</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     공장 현황
+═══════════════════════════════════════════ -->
+<section id="factory" style="background:var(--bg2);padding:100px 5%;">
+  <p class="section-tag">Facilities</p>
+  <h2 class="section-title">공장 현황</h2>
+  <div class="section-divider"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+
+    <!-- 1공장 -->
+    <div>
+      <h3 style="font-size:15px;font-weight:500;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);">1공장 (저전압) — 경주시 대동길 79</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="background:var(--accent-light);">
+            <th style="padding:10px;color:var(--accent);font-weight:500;text-align:left;" colspan="2">내역</th>
+            <th style="padding:10px;color:var(--accent);font-weight:500;text-align:center;">㎡</th>
+            <th style="padding:10px;color:var(--accent);font-weight:500;text-align:center;">평</th>
+            <th style="padding:10px;color:var(--accent);font-weight:500;text-align:left;">비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px;color:var(--dark);font-weight:500;" colspan="2">대지면적 (총면적)</td>
+            <td style="padding:10px;text-align:center;color:var(--accent);font-weight:600;">4,378</td><td style="padding:10px;text-align:center;color:var(--muted);">1,326</td><td style="padding:10px;color:var(--muted);"></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg3);">
+            <td style="padding:10px;color:var(--dark);" rowspan="2">공장동 (1동)</td>
+            <td style="padding:10px;color:var(--muted);">1층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">825</td><td style="padding:10px;text-align:center;color:var(--muted);">250</td><td style="padding:10px;color:var(--muted);font-size:11px;">자재창고, 반제품출하</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px;color:var(--muted);">2층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">750</td><td style="padding:10px;text-align:center;color:var(--muted);">227</td><td style="padding:10px;color:var(--muted);font-size:11px;">조립 라인, 회로검사</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg3);">
+            <td style="padding:10px;color:var(--dark);" rowspan="2">공장동 (2동)</td>
+            <td style="padding:10px;color:var(--muted);">1층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">810</td><td style="padding:10px;text-align:center;color:var(--muted);">245</td><td style="padding:10px;color:var(--muted);font-size:11px;">절압가공 및 검사공정</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px;color:var(--muted);">2층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">247.5</td><td style="padding:10px;text-align:center;color:var(--muted);">75</td><td style="padding:10px;color:var(--muted);font-size:11px;">사무실 및 회의실</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg3);">
+            <td style="padding:10px;color:var(--dark);" colspan="2">부속건물 (펌프실)</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">16</td><td style="padding:10px;text-align:center;color:var(--muted);">5</td><td style="padding:10px;"></td>
+          </tr>
+          <tr style="background:var(--accent-light);">
+            <td style="padding:10px;color:var(--accent);font-weight:700;" colspan="2">건물평수 계</td>
+            <td style="padding:10px;text-align:center;color:var(--accent);font-weight:700;">2,648.5</td><td style="padding:10px;text-align:center;color:var(--accent);font-weight:700;">802</td><td style="padding:10px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2공장 -->
+    <div>
+      <h3 style="font-size:15px;font-weight:500;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--gold);">2공장 (고전압) — 경주시 검단장골길 111</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="background:var(--gold-light);">
+            <th style="padding:10px;color:var(--gold);font-weight:500;text-align:left;" colspan="2">내역</th>
+            <th style="padding:10px;color:var(--gold);font-weight:500;text-align:center;">㎡</th>
+            <th style="padding:10px;color:var(--gold);font-weight:500;text-align:center;">평</th>
+            <th style="padding:10px;color:var(--gold);font-weight:500;text-align:left;">비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px;color:var(--dark);font-weight:500;" colspan="2">대지면적 (총면적)</td>
+            <td style="padding:10px;text-align:center;color:var(--gold);font-weight:600;">12,095</td><td style="padding:10px;text-align:center;color:var(--muted);">3,665</td><td style="padding:10px;"></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg3);">
+            <td style="padding:10px;color:var(--dark);">공장동 (1동)</td>
+            <td style="padding:10px;color:var(--muted);">1층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">1,025</td><td style="padding:10px;text-align:center;color:var(--muted);">310</td><td style="padding:10px;color:var(--muted);font-size:11px;">가공 및 조립 라인</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px;color:var(--dark);" rowspan="2">사무동 (2동)</td>
+            <td style="padding:10px;color:var(--muted);">1층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">654</td><td style="padding:10px;text-align:center;color:var(--muted);">198</td><td style="padding:10px;color:var(--muted);font-size:11px;">자재창고·식당·보전실·수입검사실</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg3);">
+            <td style="padding:10px;color:var(--muted);">2층</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">670</td><td style="padding:10px;text-align:center;color:var(--muted);">203</td><td style="padding:10px;color:var(--muted);font-size:11px;">사무실·회의실·측정실</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px;color:var(--dark);" colspan="2">창고</td>
+            <td style="padding:10px;text-align:center;color:var(--dark);">398</td><td style="padding:10px;text-align:center;color:var(--muted);">121</td><td style="padding:10px;"></td>
+          </tr>
+          <tr style="background:var(--gold-light);">
+            <td style="padding:10px;color:var(--gold);font-weight:700;" colspan="2">건물평수 계</td>
+            <td style="padding:10px;text-align:center;color:var(--gold);font-weight:700;">2,747</td><td style="padding:10px;text-align:center;color:var(--gold);font-weight:700;">832</td><td style="padding:10px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MES LOT 추적 시스템
+═══════════════════════════════════════════ -->
+<section id="mes" style="background:var(--dark);padding:100px 5%;">
+  <p class="section-tag" style="color:rgba(255,255,255,0.5);">Quality System</p>
+  <h2 class="section-title" style="color:#fff;">MES LOT 추적 전산화</h2>
+  <div style="width:48px;height:3px;background:#f0c040;margin:18px 0 40px;"></div>
+  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:32px;margin-bottom:32px;">
+    <div style="font-size:14px;color:#f0c040;font-weight:500;margin-bottom:16px;">MESPlus 설치 · LOT 추적 F/PROOF화</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:28px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div style="width:24px;height:24px;border-radius:50%;background:#f0c040;color:#1a2f6e;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.8);">생산 실행을 위한 기본 시스템</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div style="width:24px;height:24px;border-radius:50%;background:#f0c040;color:#1a2f6e;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.8);">LOT 추적관리 전산화 구현</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div style="width:24px;height:24px;border-radius:50%;background:#f0c040;color:#1a2f6e;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.8);">부적합품 다음 공정 이동 방지</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;">
+      <div style="background:rgba(26,79,160,0.4);border:1px solid rgba(26,79,160,0.6);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">자재창고</div>
+        <div style="font-size:12px;color:#fff;font-weight:500;">자재 입고<br>수입검사<br>자재출고</div>
+      </div>
+      <div style="background:rgba(26,79,160,0.4);border:1px solid rgba(26,79,160,0.6);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">가공라인</div>
+        <div style="font-size:12px;color:#fff;font-weight:500;">자동·반동<br>후공정<br>Gate검사</div>
+      </div>
+      <div style="background:rgba(26,79,160,0.4);border:1px solid rgba(26,79,160,0.6);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">조립라인</div>
+        <div style="font-size:12px;color:#fff;font-weight:500;">서브·컨베이어<br>회로검사<br>구조검사</div>
+      </div>
+      <div style="background:rgba(26,79,160,0.4);border:1px solid rgba(26,79,160,0.6);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">물류</div>
+        <div style="font-size:12px;color:#fff;font-weight:500;">완제품검사<br>완제품입고<br>고객 출고</div>
+      </div>
+      <div style="background:rgba(240,192,64,0.2);border:2px solid #f0c040;border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">목표</div>
+        <div style="font-size:13px;color:#f0c040;font-weight:700;">고객공정<br>Zero 불량</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);">※ 2021.03.24 우수 개선 사례 (LOT 추적 전산화) — 내부 결재 완료</p>
+</section>
+
+<section id="clients" style="background:var(--bg2);">
+  <p class="section-tag">Sales &amp; Clients</p>
+  <h2 class="section-title">매출 및 거래업체 현황</h2>
+  <div class="section-divider"></div>
+
+  <!-- 매출 추이 -->
+  <div style="background:var(--bg3);border-radius:12px;padding:32px;margin-bottom:40px;">
+    <div style="font-size:13px;color:var(--muted);margin-bottom:20px;">단위: 억원 (VAT 별도) · 2001년 설립 이후 매출 추이</div>
+    <div style="display:flex;align-items:flex-end;gap:6px;height:160px;padding-bottom:8px;overflow-x:auto;">
+      <!-- 연도별 막대 데이터 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">15</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:28px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'01</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">42</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:54px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'02</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">63</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:72px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'03</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">76</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:86px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'04</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">56</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:65px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'05</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">50</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:58px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'06</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">65</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:74px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'07</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">55</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:63px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'08</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">50</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:58px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'09</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">52</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:60px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'10</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">44</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:51px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'11</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">53</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:61px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'12</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">73</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:83px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'13</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">83</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:94px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'14</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">84</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:95px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'15</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">83</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:94px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'16</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">86</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:97px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'17</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">84</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:95px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'18</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:var(--accent);font-weight:600;">85</div>
+        <div style="width:100%;background:var(--accent);border-radius:3px 3px 0 0;height:96px;"></div>
+        <div style="font-size:9px;color:var(--muted);">'19</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:#c8910a;font-weight:700;">154</div>
+        <div style="width:100%;background:#c8910a;border-radius:3px 3px 0 0;height:138px;"></div>
+        <div style="font-size:9px;color:var(--muted);font-weight:600;">'20</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:28px;">
+        <div style="font-size:9px;color:#e05050;font-weight:700;">280</div>
+        <div style="width:100%;background:linear-gradient(to top,#e05050,#f08080);border-radius:3px 3px 0 0;height:158px;"></div>
+        <div style="font-size:9px;color:#e05050;font-weight:700;">'21목표</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 거래처 현황 테이블 -->
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:linear-gradient(90deg,#1a4fa0,#2563c4);color:#fff;">
+          <th style="padding:14px 16px;text-align:center;font-weight:500;letter-spacing:1px;">공장내역</th>
+          <th style="padding:14px 16px;text-align:center;font-weight:500;letter-spacing:1px;">거래선</th>
+          <th style="padding:14px 16px;text-align:center;font-weight:500;letter-spacing:1px;">거래시작</th>
+          <th style="padding:14px 16px;text-align:center;font-weight:500;letter-spacing:1px;">주거래 품목</th>
+          <th style="padding:14px 16px;text-align:center;font-weight:500;letter-spacing:1px;">점유율</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--bg2);border-bottom:1px solid var(--border);">
+          <td style="padding:16px;text-align:center;font-weight:500;color:var(--dark);">송하전장 1공장</td>
+          <td style="padding:16px;text-align:center;color:var(--accent);font-weight:500;">유라코퍼레이션</td>
+          <td style="padding:16px;text-align:center;color:var(--muted);">2001.01</td>
+          <td style="padding:16px;color:var(--text);">QX RR DR WIR'G ASS'Y 외</td>
+          <td style="padding:16px;text-align:center;"><span style="background:var(--accent-light);color:var(--accent);padding:4px 12px;border-radius:20px;font-weight:700;font-size:12px;">100%</span></td>
+        </tr>
+        <tr style="background:var(--bg3);border-bottom:1px solid var(--border);">
+          <td style="padding:16px;text-align:center;font-weight:500;color:var(--dark);">송하전장 2공장</td>
+          <td style="padding:16px;text-align:center;color:var(--accent);font-weight:500;">유라코퍼레이션</td>
+          <td style="padding:16px;text-align:center;color:var(--muted);">2020.07</td>
+          <td style="padding:16px;color:var(--text);">DE EV ICCB CABLE 외</td>
+          <td style="padding:16px;text-align:center;"><span style="background:var(--accent-light);color:var(--accent);padding:4px 12px;border-radius:20px;font-weight:700;font-size:12px;">100%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 인증현황 -->
+<section id="certs" style="background:var(--bg);">
+  <p class="section-tag">Certifications</p>
+  <h2 class="section-title">인증 현황</h2>
+  <div class="section-divider"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div style="background:var(--bg2);border-radius:12px;border:1px solid var(--border);overflow:hidden;">
+      <div style="background:linear-gradient(90deg,#1a4fa0,#2563c4);padding:16px 24px;text-align:center;">
+        <div style="font-size:16px;font-weight:500;color:#fff;letter-spacing:2px;">HKMC SQ</div>
+      </div>
+      <div style="padding:32px;text-align:center;">
+        <div style="width:80px;height:80px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--accent);">
+          <span style="font-size:28px;">🏆</span>
+        </div>
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px;">SQ A등급</div>
+        <div style="font-size:13px;color:var(--muted);">현대기아자동차 협력사 품질 인증<br>HKMC SQ A등급 취득</div>
+        <div style="margin-top:16px;padding:10px 20px;background:var(--accent-light);border-radius:8px;font-size:12px;color:var(--accent);font-weight:500;">Certificate No. WH114</div>
+      </div>
+    </div>
+    <div style="background:var(--bg2);border-radius:12px;border:1px solid var(--border);overflow:hidden;">
+      <div style="background:linear-gradient(90deg,#1a4fa0,#2563c4);padding:16px 24px;text-align:center;">
+        <div style="font-size:16px;font-weight:500;color:#fff;letter-spacing:2px;">ISO 9001</div>
+      </div>
+      <div style="padding:32px;text-align:center;">
+        <div style="width:80px;height:80px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--accent);">
+          <span style="font-size:28px;">✅</span>
+        </div>
+        <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px;">ISO 9001 인증</div>
+        <div style="font-size:13px;color:var(--muted);">품질경영시스템 국제 인증<br>KS Q ISO 9001:2009 / ISO 9001:2008</div>
+        <div style="margin-top:16px;padding:10px 20px;background:var(--accent-light);border-radius:8px;font-size:12px;color:var(--accent);font-weight:500;">EQAICC-Q-R4746</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 조직도 -->
+<section id="org" style="background:var(--bg2);">
+  <p class="section-tag">Organization</p>
+  <h2 class="section-title">인원 현황 및 조직도</h2>
+  <div class="section-divider"></div>
+
+  <!-- 조직도 -->
+  <div style="background:var(--bg3);border-radius:12px;padding:40px 32px;margin-bottom:40px;overflow-x:auto;">
+    <div style="min-width:560px;">
+      <!-- 대표이사 -->
+      <div style="display:flex;justify-content:center;margin-bottom:0;">
+        <div style="background:linear-gradient(135deg,#1a4fa0,#2563c4);color:#fff;padding:12px 28px;border-radius:8px;text-align:center;font-size:13px;font-weight:500;min-width:110px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:2px;">대표이사</div>
+          <div>성락목</div>
+        </div>
+      </div>
+      <!-- 연결선 -->
+      <div style="display:flex;justify-content:center;"><div style="width:2px;height:24px;background:var(--border);"></div></div>
+      <!-- 부사장 + 개발부 -->
+      <div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:0;">
+        <div style="background:var(--accent-light);border:1px solid var(--accent);padding:10px 22px;border-radius:8px;text-align:center;font-size:13px;min-width:100px;">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">부사장</div>
+          <div style="color:var(--accent);font-weight:500;">이언무</div>
+        </div>
+        <div style="width:32px;height:2px;background:var(--border);"></div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:10px 18px;border-radius:8px;text-align:center;font-size:12px;color:var(--muted);min-width:80px;">개발부</div>
+      </div>
+      <div style="display:flex;justify-content:center;"><div style="width:2px;height:24px;background:var(--border);"></div></div>
+      <!-- 1공장장 / 2공장장 -->
+      <div style="display:flex;justify-content:center;gap:120px;position:relative;">
+        <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);width:120px;height:2px;background:var(--border);"></div>
+        <div style="background:var(--bg2);border:1px solid var(--accent);padding:10px 20px;border-radius:8px;text-align:center;font-size:12px;color:var(--accent);font-weight:500;min-width:90px;">1공장장</div>
+        <div style="background:var(--bg2);border:1px solid var(--accent);padding:10px 20px;border-radius:8px;text-align:center;font-size:12px;color:var(--accent);font-weight:500;min-width:90px;">2공장장</div>
+      </div>
+      <!-- 하위 부서 -->
+      <div style="display:flex;justify-content:space-between;margin-top:20px;gap:8px;flex-wrap:wrap;">
+        <div style="display:flex;gap:8px;justify-content:center;flex:1;">
+          <div style="background:var(--bg2);border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-align:center;font-size:11px;color:var(--muted);min-width:56px;">관리부</div>
+          <div style="background:var(--bg2);border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-align:center;font-size:11px;color:var(--muted);min-width:56px;">생산부</div>
+          <div style="background:var(--bg2);border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-align:center;font-size:11px;color:var(--muted);min-width:56px;">자재부</div>
+          <div style="background:var(--bg2);border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-align:center;font-size:11px;color:var(--muted);min-width:56px;">품질부</div>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:center;flex:1;">
+          <div style="background:var(--bg2);border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-align:center;font-size:11px;color:var(--muted);min-width:56px;">생산부</div>
+          <div style="background:var(--bg2);border:1px solid var(--border);padding:8px 12px;border-radius:8px;text-align:center;font-size:11px;color:var(--muted);min-width:56px;">품질부</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 인원 현황 테이블 -->
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:center;">
+      <thead>
+        <tr style="background:linear-gradient(90deg,#1a4fa0,#2563c4);color:#fff;">
+          <th style="padding:12px;font-weight:500;" rowspan="2">구분</th>
+          <th style="padding:12px;font-weight:500;" colspan="6">1공장</th>
+          <th style="padding:12px;font-weight:500;" colspan="4">2공장</th>
+          <th style="padding:12px;font-weight:500;" rowspan="2">총원</th>
+        </tr>
+        <tr style="background:#1a4fa0;color:rgba(255,255,255,0.85);font-size:11px;">
+          <th style="padding:8px;">공장장</th>
+          <th style="padding:8px;">개발부</th>
+          <th style="padding:8px;">관리부</th>
+          <th style="padding:8px;">생산부</th>
+          <th style="padding:8px;">자재부</th>
+          <th style="padding:8px;">품질부</th>
+          <th style="padding:8px;">공장장</th>
+          <th style="padding:8px;">생산부</th>
+          <th style="padding:8px;">품질부</th>
+          <th style="padding:8px;">소계</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--bg2);border-bottom:1px solid var(--border);">
+          <td style="padding:12px;font-weight:500;color:var(--dark);">관리자</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">3</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">3</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">3</td>
+          <td style="padding:12px;font-weight:700;color:var(--accent);">13</td>
+        </tr>
+        <tr style="background:var(--bg3);border-bottom:1px solid var(--border);">
+          <td style="padding:12px;font-weight:500;color:var(--dark);">작업자</td>
+          <td style="padding:12px;color:var(--muted);">0</td>
+          <td style="padding:12px;color:var(--muted);">0</td>
+          <td style="padding:12px;color:var(--muted);">0</td>
+          <td style="padding:12px;color:var(--muted);">47</td>
+          <td style="padding:12px;color:var(--muted);">1</td>
+          <td style="padding:12px;color:var(--muted);">14</td>
+          <td style="padding:12px;color:var(--muted);">0</td>
+          <td style="padding:12px;color:var(--muted);">22</td>
+          <td style="padding:12px;color:var(--muted);">3</td>
+          <td style="padding:12px;color:var(--muted);">25</td>
+          <td style="padding:12px;font-weight:700;color:var(--accent);">87</td>
+        </tr>
+        <tr style="background:var(--accent-light);">
+          <td style="padding:12px;font-weight:700;color:var(--accent);">소계</td>
+          <td style="padding:12px;font-weight:500;">1</td>
+          <td style="padding:12px;font-weight:500;">1</td>
+          <td style="padding:12px;font-weight:500;">1</td>
+          <td style="padding:12px;font-weight:500;">50</td>
+          <td style="padding:12px;font-weight:500;">2</td>
+          <td style="padding:12px;font-weight:500;">17</td>
+          <td style="padding:12px;font-weight:500;">1</td>
+          <td style="padding:12px;font-weight:500;">23</td>
+          <td style="padding:12px;font-weight:500;">4</td>
+          <td style="padding:12px;font-weight:500;">28</td>
+          <td style="padding:12px;font-weight:700;color:var(--accent);font-size:15px;">100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-tag">Contact</p>
+  <h2 class="section-title">문의하기</h2>
+  <div class="section-divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>제품 및 견적 문의</h3>
+      <div style="margin-bottom:20px;padding:14px 16px;background:var(--accent-light);border-radius:8px;border-left:3px solid var(--accent);">
+        <div style="font-size:11px;color:var(--accent);font-weight:600;letter-spacing:2px;margin-bottom:6px;">1공장</div>
+        <div style="font-size:13px;color:var(--dark);">경상북도 경주시 대동길 79</div>
+        <div style="font-size:13px;color:var(--accent);font-weight:500;">TEL. 054-763-0170</div>
+      </div>
+      <div style="margin-bottom:24px;padding:14px 16px;background:var(--gold-light);border-radius:8px;border-left:3px solid var(--gold);">
+        <div style="font-size:11px;color:var(--gold);font-weight:600;letter-spacing:2px;margin-bottom:6px;">2공장</div>
+        <div style="font-size:13px;color:var(--dark);">경상북도 경주시 검단장골길 111</div>
+        <div style="font-size:13px;color:var(--gold);font-weight:500;">TEL. 054-763-0180</div>
+      </div>
+      <div class="info-row"><div class="info-icon">✉️</div><div><div class="info-label">이메일</div><div class="info-value">info@songha.co.kr</div></div></div>
+      <div class="info-row"><div class="info-icon">🕐</div><div><div class="info-label">운영시간</div><div class="info-value">월–금 09:00 – 18:00</div></div></div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group"><label>회사명</label><input type="text" placeholder="회사명을 입력하세요"></div>
+        <div class="form-group"><label>담당자명</label><input type="text" placeholder="성함을 입력하세요"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>연락처</label><input type="tel" placeholder="010-0000-0000"></div>
+        <div class="form-group"><label>이메일</label><input type="email" placeholder="email@company.com"></div>
+      </div>
+      <div class="form-group">
+        <label>문의 제품</label>
+        <select>
+          <option value="">제품을 선택하세요</option>
+          <option>엔진룸 와이어링 하네스</option>
+          <option>실내 와이어링 하네스</option>
+          <option>바디 와이어링 하네스</option>
+          <option>EV / 하이브리드용 하네스</option>
+          <option>기타 (직접 문의)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>문의 내용</label><textarea rows="5" placeholder="제품 사양, 수량, 납기 등 문의 내용을 자유롭게 작성해 주세요."></textarea></div>
+      <button type="submit" class="submit-btn">문의 보내기</button>
+    </form>
+  </div>
+</section>
+
+<section id="directions" style="background:var(--bg2);">
+  <p class="section-tag">Directions</p>
+  <h2 class="section-title">오시는 길</h2>
+  <div class="section-divider"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+    <!-- 1공장 -->
+    <div>
+      <h3 style="font-size:14px;font-weight:500;color:var(--accent);margin-bottom:16px;letter-spacing:1px;">1공장 (저전압)</h3>
+      <div class="map-wrap" style="margin-bottom:16px;">
+        <iframe src="https://map.kakao.com/link/map/송하전장1공장,35.8834,129.2191" width="100%" height="100%" style="border:none;" allowfullscreen></iframe>
+      </div>
+      <div class="address-box">
+        <strong>주소</strong>
+        경상북도 경주시 대동길 79<br>
+        <span style="font-size:13px;color:var(--accent);font-weight:500;">TEL. 054-763-0170</span>
+      </div>
+      <div class="direction-section">
+        <h4>자동차 이용 시</h4>
+        <div class="direction-item"><div class="dir-dot"></div><div class="dir-text">경부고속도로 → 경주IC 진출 → 대동길 방면 (약 15분)</div></div>
+      </div>
+    </div>
+    <!-- 2공장 -->
+    <div>
+      <h3 style="font-size:14px;font-weight:500;color:var(--gold);margin-bottom:16px;letter-spacing:1px;">2공장 (고전압)</h3>
+      <div class="map-wrap" style="margin-bottom:16px;">
+        <iframe src="https://map.kakao.com/link/map/송하전장2공장,35.8481,129.2204" width="100%" height="100%" style="border:none;" allowfullscreen></iframe>
+      </div>
+      <div class="address-box" style="background:var(--gold-light);border-left-color:var(--gold);">
+        <strong style="color:var(--gold);">주소</strong>
+        경상북도 경주시 검단장골길 111 (안강읍)<br>
+        <span style="font-size:13px;color:var(--gold);font-weight:500;">TEL. 054-763-0180</span>
+      </div>
+      <div class="direction-section">
+        <h4>자동차 이용 시</h4>
+        <div class="direction-item"><div class="dir-dot"></div><div class="dir-text">경부고속도로 → 경주IC 진출 → 안강읍 방면 → 검단장골길 (약 20분)</div></div>
+        <div class="direction-item"><div class="dir-dot"></div><div class="dir-text">포항 방면 → 7번 국도 → 안강읍 → 검단장골길 (약 15분)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">송하전장</div>
+  <div class="footer-copy">© 2025 송하전장. All rights reserved.</div>
+  <div class="footer-info">
+    사업자등록번호: 000-00-00000<br>
+    대표이사 성락목 | 1공장: 054-763-0170 · 2공장: 054-763-0180
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('문의가 접수되었습니다.\n빠른 시일 내에 연락드리겠습니다.\n감사합니다.');
+    e.target.reset();
+  }
+  function showTab(showId, hideId, activeBtn, inactiveBtn) {
+    document.getElementById(showId).style.display = 'block';
+    document.getElementById(hideId).style.display = 'none';
+    activeBtn.style.background = '#f0c040';
+    activeBtn.style.color = '#1a2f6e';
+    activeBtn.style.fontWeight = '700';
+    activeBtn.style.border = 'none';
+    inactiveBtn.style.background = 'transparent';
+    inactiveBtn.style.color = 'rgba(255,255,255,0.7)';
+    inactiveBtn.style.fontWeight = '400';
+    inactiveBtn.style.border = '1px solid rgba(255,255,255,0.3)';
+  }
+</script>
+</body>
+</html>
