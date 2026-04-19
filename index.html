@@ -109,7 +109,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.25);
       padding-bottom: 12px;
     }
-    .philosophy-items { display: flex; flex-direction: column; gap: 14px; }
+    .philosophy-items { display: flex; flex-direction: row; gap: 40px; justify-content: center; }
     .philosophy-item { display: flex; align-items: center; gap: 12px; }
     .philosophy-dot {
       width: 9px; height: 9px; border-radius: 50%;
@@ -346,8 +346,14 @@
       ★ 생산라인 사진: factory.jpg를 같은 폴더에 저장 후 주석 해제
       <img src="factory.jpg" alt="송하전장 생산라인" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;">
       -->
-      <img src="company.jpg" alt="송하전장 공장 전경" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;">
-      <img src="Producing_pic.jpg" alt="송하전장 생산라인" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;">
+      <div style="margin-bottom:4px;">
+        <img src="company.jpg" alt="송하전장 공장 전경" style="width:85%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block;margin:0 auto;">
+        <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:1px;">&lt;공장 전경&gt;</p>
+      </div>
+      <div>
+        <img src="Producing_pic.jpg" alt="송하전장 생산라인" style="width:85%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block;margin:0 auto;">
+        <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:1px;">&lt;생산라인&gt;</p>
+      </div>
     </div>
   </div>
 </section>
