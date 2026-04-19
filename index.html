@@ -95,21 +95,65 @@
 
     /* 설립 이념 카드 */
     .philosophy-box {
-      background: linear-gradient(135deg, #1a2f6e, #1a4fa0);
-      border-radius: 12px; padding: 32px 28px; margin-top: 28px; color: #fff;
+      background: linear-gradient(160deg, #1a2a5e 0%, #1e4a8a 45%, #6aaad4 100%);
+      border-radius: 10px; padding: 28px 28px 32px; margin-top: 28px; color: #fff;
+      border: 1px solid rgba(100,160,220,0.3);
+      max-width: 280px;
     }
-    .philosophy-box h4 { font-size: 12px; letter-spacing: 3px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 20px; }
-    .philosophy-items { display: flex; flex-direction: column; gap: 12px; }
-    .philosophy-item { display: flex; align-items: center; gap: 14px; }
-    .philosophy-dot { width: 8px; height: 8px; border-radius: 50%; background: #f0c040; flex-shrink: 0; }
-    .philosophy-text { font-size: 17px; font-weight: 500; letter-spacing: 2px; color: #fff; }
+    .philosophy-box h4 {
+      font-size: 20px; font-weight: 700; color: #fff;
+      margin-bottom: 18px; letter-spacing: 2px;
+      font-family: var(--font-body);
+      font-style: italic;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 12px;
+    }
+    .philosophy-items { display: flex; flex-direction: column; gap: 14px; }
+    .philosophy-item { display: flex; align-items: center; gap: 12px; }
+    .philosophy-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #fff; flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .philosophy-text { font-size: 16px; font-weight: 500; letter-spacing: 2px; color: #fff; }
 
-    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
-    .feature-card { background: var(--bg3); border: 1px solid var(--border); padding: 22px; border-radius: 8px; transition: border-color 0.2s, box-shadow 0.2s; }
-    .feature-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(26,79,160,0.08); }
-    .feature-icon { font-size: 22px; margin-bottom: 8px; }
-    .feature-card h4 { font-size: 13px; font-weight: 500; margin-bottom: 5px; color: var(--dark); }
-    .feature-card p { font-size: 12px; color: var(--muted); font-weight: 300; }
+    .about-features { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 18px 24px;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.25s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent), #6aaad4);
+      border-radius: 12px 0 0 12px;
+    }
+    .feature-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 6px 20px rgba(26,79,160,0.10);
+      border-color: rgba(26,79,160,0.25);
+    }
+    .feature-icon { display: none; }
+    .feature-card h4 {
+      font-size: 15px; font-weight: 700;
+      color: var(--dark); letter-spacing: 0.5px;
+      min-width: 120px; margin: 0;
+    }
+    .feature-card p {
+      font-size: 13px; color: var(--muted);
+      font-weight: 300; line-height: 1.6; margin: 0;
+    }
 
     .history { margin-top: 40px; }
     .history h3 { font-size: 15px; font-weight: 500; margin-bottom: 20px; color: var(--dark); }
@@ -1135,6 +1179,17 @@
         <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px;">ISO 9001 인증</div>
         <div style="font-size:13px;color:var(--muted);">품질경영시스템 국제 인증<br>KS Q ISO 9001:2009 / ISO 9001:2008</div>
         <div style="margin-top:16px;padding:10px 20px;background:var(--accent-light);border-radius:8px;font-size:12px;color:var(--accent);font-weight:500;">EQAICC-Q-R4746</div>
+        <!-- 인증서 이미지 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
+          <div>
+            <img src="SQ_certification1.jpg" alt="SQ 인증서 1"
+              style="width:100%;border-radius:8px;border:1px solid var(--border);object-fit:cover;">
+          </div>
+          <div>
+            <img src="SQ_certification2.jpg" alt="SQ 인증서 2"
+              style="width:100%;border-radius:8px;border:1px solid var(--border);object-fit:cover;">
+          </div>
+        </div>
       </div>
     </div>
   </div>
